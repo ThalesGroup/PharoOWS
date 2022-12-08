@@ -10,6 +10,6 @@ Pharo 11 :
 ```smalltalk
 Metacello new
    baseline: 'PharoWMS';
-   repository: 'github://OpenSmock/PharoWMS';
+   repository: 'github://OpenSmock/PharoWMS:main';
    load.
 ```
