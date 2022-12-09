@@ -10,6 +10,9 @@ BaselineOfPharoWMS >> baseline: spec [
 	spec
 		for: #common
 		do: [
+			"Dependencies"
+			self dependencies: spec.
+			
 			"Packages"
 			spec
 				package: 'PharoWMS-QGIS';
