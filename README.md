@@ -5,7 +5,7 @@ WMS service support for Pharo
 
 ### Installing PharoWMS
 
-Pharo 11 : 
+Pharo 11 :
 
 ```smalltalk
 Metacello new
@@ -13,3 +13,8 @@ Metacello new
    repository: 'github://OpenSmock/PharoWMS:main';
    load.
 ```
+
+### Dependencies
+
+PharoWMS loads these others projects :
+  - [XMLParser](https://github.com/pharo-contributions/XML-XMLParser)
