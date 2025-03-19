@@ -1,5 +1,6 @@
-# PharoWMS
-WMS service support for Pharo
+# PharoOWS
+
+OGC Web Services support for Pharo.
 
 ## Getting Started
 
@@ -9,8 +10,8 @@ Pharo 11 :
 
 ```smalltalk
 Metacello new
-   baseline: 'PharoWMS';
-   repository: 'github://OpenSmock/PharoWMS:main';
+   baseline: 'PharoOWS';
+   repository: 'github://OpenSmock/PharoOWS:main';
    load.
 ```
 

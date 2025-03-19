@@ -1,16 +1,16 @@
 Class {
-	#name : #QGISLayer,
+	#name : #PharoOWSServiceLayer,
 	#superclass : #Object,
 	#instVars : [
 		'xmlElement',
 		'name',
 		'title'
 	],
-	#category : #'PharoWMS-QGIS'
+	#category : #'PharoOWS-Service'
 }
 
 { #category : #'instance creation' }
-QGISLayer class >> fromXMLLayer: aXMLElement [
+PharoOWSServiceLayer class >> fromXMLLayer: aXMLElement [
 
 	| tmp |
 	tmp := self new.
@@ -20,31 +20,31 @@ QGISLayer class >> fromXMLLayer: aXMLElement [
 ]
 
 { #category : #'instance creation' }
-QGISLayer class >> fromXMLList: aList [
+PharoOWSServiceLayer class >> fromXMLList: aList [
 ^aList collect: [ :e | self fromXMLLayer: e ].
 ]
 
 { #category : #accessing }
-QGISLayer >> name [
+PharoOWSServiceLayer >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-QGISLayer >> name: anObject [
+PharoOWSServiceLayer >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #parsing }
-QGISLayer >> parseElement [
+PharoOWSServiceLayer >> parseElement [
 
 	name := (self xmlElement elementAt:'Name') strings first.
 	title := (self xmlElement elementAt: 'Title') strings first.
 ]
 
 { #category : #printing }
-QGISLayer >> printOn: aStream [
+PharoOWSServiceLayer >> printOn: aStream [
 
 	super printOn: aStream.
 	aStream nextPutAll: ' <'.
@@ -53,25 +53,25 @@ QGISLayer >> printOn: aStream [
 ]
 
 { #category : #accessing }
-QGISLayer >> title [
+PharoOWSServiceLayer >> title [
 
 	^ title
 ]
 
 { #category : #accessing }
-QGISLayer >> title: anObject [
+PharoOWSServiceLayer >> title: anObject [
 
 	title := anObject
 ]
 
 { #category : #accessing }
-QGISLayer >> xmlElement [
+PharoOWSServiceLayer >> xmlElement [
 
 	^ xmlElement
 ]
 
 { #category : #accessing }
-QGISLayer >> xmlElement: anObject [
+PharoOWSServiceLayer >> xmlElement: anObject [
 
 	xmlElement := anObject
 ]

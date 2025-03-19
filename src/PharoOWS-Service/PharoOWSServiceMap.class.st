@@ -1,9 +1,9 @@
 Class {
-	#name : #QGISTile,
+	#name : #PharoOWSServiceMap,
 	#superclass : #Object,
 	#instVars : [
 		'bounds',
 		'form'
 	],
-	#category : #'PharoWMS-QGIS'
+	#category : #'PharoOWS-Service'
 }
