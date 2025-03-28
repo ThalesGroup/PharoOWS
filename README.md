@@ -1,20 +1,21 @@
-# PharoWMS
-WMS service support for Pharo
+# PharoOWS
+
+OGC Web Services support for Pharo.
 
 ## Getting Started
 
-### Installing PharoWMS
+### Installing PharoOWS
 
 Pharo 11 :
 
 ```smalltalk
 Metacello new
-   baseline: 'PharoWMS';
-   repository: 'github://OpenSmock/PharoWMS:main';
+   baseline: 'PharoOWS';
+   repository: 'github://OpenSmock/PharoOWS:main';
    load.
 ```
 
 ### Dependencies
 
-PharoWMS loads these others projects :
+PharoOWS loads these others projects :
   - [XMLParser](https://github.com/pharo-contributions/XML-XMLParser)
