@@ -14,6 +14,7 @@ PharoOWSServiceWMSTest >> testMap [
 	qc := PharoOWSServiceWMS new.
 	size := 1920@1080.
 	qc endpoint: 'qgisserver'.
+	qc port: 4000.
 	map := qc
 		map: { 'countries' }
 		bounds: (-90 @ -180 corner: 90 @ 180)
