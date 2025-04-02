@@ -1,5 +1,5 @@
 Class {
-	#name : #QGISClient,
+	#name : #PharoOWSService,
 	#superclass : #Object,
 	#instVars : [
 		'host',
@@ -8,11 +8,11 @@ Class {
 		'client',
 		'capabilities'
 	],
-	#category : #'PharoWMS-QGIS'
+	#category : #'PharoOWS-Service'
 }
 
 { #category : #'instance creation' }
-QGISClient class >> host: aName port: aPort [
+PharoOWSService class >> host: aName port: aPort [
 
 	| qc |
 	qc  := self basicNew.
@@ -24,15 +24,15 @@ QGISClient class >> host: aName port: aPort [
 ]
 
 { #category : #'instance creation' }
-QGISClient class >> new [
+PharoOWSService class >> new [
 ^self host:'localhost' port:80.
 ]
 
 { #category : #accessing }
-QGISClient >> baseUrl [
+PharoOWSService >> baseUrl [
 
 	| baseUrl |
-	baseUrl ifNil: [ 
+	baseUrl ifNil: [
 		baseUrl := 'http://' , self host , ':' , self port asString
 		           ,
 		           (self endpoint ifNil: [ '' ] ifNotNil: [ :e | '/' , e  ]) ].
@@ -40,69 +40,69 @@ QGISClient >> baseUrl [
 ]
 
 { #category : #api }
-QGISClient >> capabilities [
-^self subclassResponsibility 
+PharoOWSService >> capabilities [
+^self subclassResponsibility
 ]
 
 { #category : #accessing }
-QGISClient >> client [
+PharoOWSService >> client [
 	client ifNil:[client := ZnClient new].
 	^ client
 ]
 
 { #category : #accessing }
-QGISClient >> client: anObject [
+PharoOWSService >> client: anObject [
 
 	client := anObject
 ]
 
 { #category : #accessing }
-QGISClient >> endpoint [
+PharoOWSService >> endpoint [
 
 	^ endpoint
 ]
 
 { #category : #accessing }
-QGISClient >> endpoint: anObject [
+PharoOWSService >> endpoint: anObject [
 
 	endpoint := anObject
 ]
 
 { #category : #accessing }
-QGISClient >> host [
+PharoOWSService >> host [
 
 	^ host ifNil: [ host := 'localhost' ]
 ]
 
 { #category : #accessing }
-QGISClient >> host: anObject [
+PharoOWSService >> host: anObject [
 
 	host := anObject
 ]
 
 { #category : #api }
-QGISClient >> isRunning [
+PharoOWSService >> isRunning [
 
 	^ '*http://www.opengis.net/ogc*' match:
 		  (self client get: self baseUrl)
 ]
 
 { #category : #api }
-QGISClient >> layers [
+PharoOWSService >> layers [
 
-	^QGISLayer fromXMLList:
-		((self capabilities document descendantElementsNamed: 'Layer') first 
+	^PharoOWSServiceLayer fromXMLList:
+		((self capabilities document descendantElementsNamed: 'Layer') first
 			 descendantElementsNamed: 'Layer')
 ]
 
 { #category : #accessing }
-QGISClient >> port [
+PharoOWSService >> port [
 
 	^ port ifNil: [ port := 80 ]
 ]
 
 { #category : #accessing }
-QGISClient >> port: anObject [
+PharoOWSService >> port: anObject [
 
 	port := anObject
 ]

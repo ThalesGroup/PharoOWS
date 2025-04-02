@@ -1,14 +1,14 @@
 Class {
-	#name : #QGISWMSClient,
-	#superclass : #QGISClient,
-	#category : #'PharoWMS-QGIS'
+	#name : #PharoOWSServiceWMS,
+	#superclass : #PharoOWSService,
+	#category : #'PharoOWS-Service'
 }
 
 { #category : #api }
-QGISWMSClient >> baseUrl [
+PharoOWSServiceWMS >> baseUrl [
 
 	| baseUrl |
-	baseUrl ifNil: [ 
+	baseUrl ifNil: [
 		baseUrl := 'http://' , self host , ':' , self port asString
 		           ,
 		           (self endpoint ifNil: [ '' ] ifNotNil: [ :e | '/' , e ]).
@@ -18,11 +18,11 @@ QGISWMSClient >> baseUrl [
 ]
 
 { #category : #api }
-QGISWMSClient >> capabilities [
+PharoOWSServiceWMS >> capabilities [
 
 	| url xml |
 	self isRunning ifFalse: [ self error: 'Server is not running' ].
-	capabilities ifNil: [ 
+	capabilities ifNil: [
 		url := self baseUrl , '&REQUEST=GetCapabilities'.
 		xml := self client get: url.
 		capabilities := (XMLDOMParser parse: xml) document ].
@@ -30,7 +30,7 @@ QGISWMSClient >> capabilities [
 ]
 
 { #category : #api }
-QGISWMSClient >> map: aLayerList bounds: aBounds size: aSize coordinates: aCoordinates [
+PharoOWSServiceWMS >> map: aLayerList bounds: aBounds size: aSize coordinates: aCoordinates [
 
 	| layerList layerListWs url bbox img |
 	self isRunning ifFalse: [ self error: 'Server is not running' ].
@@ -51,7 +51,7 @@ QGISWMSClient >> map: aLayerList bounds: aBounds size: aSize coordinates: aCoord
 ]
 
 { #category : #api }
-QGISWMSClient >> map: aLayerList bounds: aBounds size: aSize epsg: aEPSGCoordinates [
+PharoOWSServiceWMS >> map: aLayerList bounds: aBounds size: aSize epsg: aEPSGCoordinates [
 
 	^ self
 		  map: aLayerList
