@@ -4,7 +4,7 @@ OGC Web Services support for Pharo.
 
 ## Getting Started
 
-### Installing PharoWMS
+### Installing PharoOWS
 
 Pharo 11 :
 
@@ -17,5 +17,5 @@ Metacello new
 
 ### Dependencies
 
-PharoWMS loads these others projects :
+PharoOWS loads these others projects :
   - [XMLParser](https://github.com/pharo-contributions/XML-XMLParser)

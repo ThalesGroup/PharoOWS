@@ -15,8 +15,8 @@ PharoOWSServiceWMSTest >> testMap [
 	size := 1920@1080.
 	qc endpoint: 'qgisserver'.
 	map := qc
-		       map: { 'countries' }
-		       bounds: (-90 @ -180 corner: 90 @ 180)
-				 size: size
-		       epsg: '4326'
+		map: { 'countries' }
+		bounds: (-90 @ -180 corner: 90 @ 180)
+		size: size
+		epsg: '4326'
 ]
