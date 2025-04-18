@@ -13,10 +13,10 @@ PharoOWSServiceWMSTest >> testMap [
 	| qc map size |
 	qc := PharoOWSServiceWMS new.
 	size := 1920@1080.
-	qc endpoint: 'qgisserver'.
+	qc endpoint: 'https://data.geopf.fr/wms-r'.
 	map := qc
-		map: { 'countries' }
-		bounds: (-90 @ -180 corner: 90 @ 180)
-		size: size
-		epsg: '4326'
+		       map: { 'Carte littorale (SHOM/IGN)' }
+		       bounds: (-90 @ -180 corner: 90 @ 180)
+				 size: size
+		       epsg: '4326'
 ]
