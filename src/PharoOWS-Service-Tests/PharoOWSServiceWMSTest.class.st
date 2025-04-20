@@ -9,8 +9,8 @@ Class {
 	#category : #'PharoOWS-Service-Tests'
 }
 
-{ #category : #tests }
-PharoOWSServiceWMSTest >> testMapInvalidLayer [
+{ #category : #testsGetMap }
+PharoOWSServiceWMSTest >> testInvalidLayer [
 
 	| qc map size |
 	qc := PharoOWSServiceWMS new.
@@ -19,24 +19,25 @@ PharoOWSServiceWMSTest >> testMapInvalidLayer [
 	
 	self should: [
 		map := qc
-			       map: { 'InvalidLayer' }
-		 	      bounds: (-546079 @ 6126282 corner: -398839 @ 6212047)
+			      map: { 'InvalidLayer' }
+		 	      bbox: (-546079 @ 6126282 corner: -398839 @ 6212047)
 		  	      size: size
 		   		   epsg: '3857'.
    ] raise: Error.
 
 ]
 
-{ #category : #tests }
-PharoOWSServiceWMSTest >> testMapOneLayer [
+{ #category : #testsGetMap }
+PharoOWSServiceWMSTest >> testOneLayer [
 
 	| qc map size |
 	qc := PharoOWSServiceWMS new.
-	size := 800 @ 600.
 	qc url: 'https://data.geopf.fr/wms-r'.
+	
+	size := 800 @ 600.
 	map := qc
 		       map: { 'GEOGRAPHICALGRIDSYSTEMS.COASTALMAPS' }
-		       bounds: (-509969 @ 6164380 corner: -504505 @ 6167923)
+		       bbox: (-509969 @ 6164380 corner: -504505 @ 6167923)
 		       size: size
 		       epsg: '3857'.
 
@@ -46,8 +47,8 @@ PharoOWSServiceWMSTest >> testMapOneLayer [
 	"self image: map"
 ]
 
-{ #category : #tests }
-PharoOWSServiceWMSTest >> testMapSeveralLayers [
+{ #category : #testsGetMap }
+PharoOWSServiceWMSTest >> testSeveralLayers [
 
 	| qc map size |
 	qc := PharoOWSServiceWMS new.
@@ -55,7 +56,7 @@ PharoOWSServiceWMSTest >> testMapSeveralLayers [
 	qc url: 'https://data.geopf.fr/wms-r'.
 	map := qc
 		       map: { 'EL.GridCoverage'. 'FORETS.PUBLIQUES' }
-		       bounds: (-546079 @ 6126282 corner: -398839 @ 6212047)
+		       bbox: (-546079 @ 6126282 corner: -398839 @ 6212047)
 		       size: size
 		       epsg: '3857'.
 		
