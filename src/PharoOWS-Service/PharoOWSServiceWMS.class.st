@@ -7,18 +7,26 @@ Class {
 { #category : #api }
 PharoOWSServiceWMS >> map: aLayerList bounds: aBounds size: aSize coordinates: aCoordinates [
 
-	| mapUrl bbox img layers |
-
+	| params bbox result layers error |
 	layers := ',' join: aLayerList.
 	bbox := aBounds origin x printString , ','
 	        , aBounds origin y printString , ','
 	        , aBounds corner x printString , ','
 	        , aBounds corner y printString.
-	mapUrl := 'SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&STYLES=&LAYERS='
-	       , layers , '&BBOX=' , bbox , '&CRS='
-	       , aCoordinates , '&WIDTH=' , aSize x printString, '&HEIGHT=' , aSize y printString.
-	img := self client get: self url, '?', mapUrl.
-	^ Form fromBinaryStream: img readStream.
+
+	params := 'SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&STYLES=&LAYERS='
+	          , layers , '&BBOX=' , bbox , '&CRS=' , aCoordinates
+	          , '&WIDTH=' , aSize x printString , '&HEIGHT='
+	          , aSize y printString.
+
+	result := self client get: self url , '?' , params.
+	(result isKindOf: String) 
+		ifTrue: [ 
+			error := Error new.
+			error messageText: result; signal. 
+		].
+
+	^ Form fromBinaryStream: result readStream
 ]
 
 { #category : #api }

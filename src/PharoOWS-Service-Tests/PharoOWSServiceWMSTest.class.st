@@ -10,6 +10,24 @@ Class {
 }
 
 { #category : #tests }
+PharoOWSServiceWMSTest >> testMapInvalidLayer [
+
+	| qc map size |
+	qc := PharoOWSServiceWMS new.
+	size := 800 @ 600.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	
+	self should: [
+		map := qc
+			       map: { 'InvalidLayer' }
+		 	      bounds: (-546079 @ 6126282 corner: -398839 @ 6212047)
+		  	      size: size
+		   		   epsg: '3857'.
+   ] raise: Error.
+
+]
+
+{ #category : #tests }
 PharoOWSServiceWMSTest >> testMapOneLayer [
 
 	| qc map size |
@@ -21,8 +39,11 @@ PharoOWSServiceWMSTest >> testMapOneLayer [
 		       bounds: (-509969 @ 6164380 corner: -504505 @ 6167923)
 		       size: size
 		       epsg: '3857'.
-		
-	self image: map
+
+	self assert: map height equals: size y.
+	self assert: map width equals: size x.
+
+	"self image: map"
 ]
 
 { #category : #tests }
@@ -38,5 +59,8 @@ PharoOWSServiceWMSTest >> testMapSeveralLayers [
 		       size: size
 		       epsg: '3857'.
 		
-	self image: map
+	self assert: map height equals: size y.
+	self assert: map width equals: size x.
+			
+	"self image: map"
 ]
