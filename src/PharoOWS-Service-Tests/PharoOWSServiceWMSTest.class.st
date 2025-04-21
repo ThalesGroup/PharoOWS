@@ -78,6 +78,44 @@ PharoOWSServiceWMSTest >> testOneLayer [
 	"self image: map"
 ]
 
+{ #category : #testsGetCapabilities }
+PharoOWSServiceWMSTest >> testRequests [
+
+	| qc requests ok |
+	qc := PharoOWSServiceWMS new.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	requests := qc requests.
+	self assert: requests isNotEmpty.
+
+	ok := false.
+	requests do: [ :request |
+		(request name = 'GetMap')
+   			ifTrue: [ 
+				request formats do: [ :format |
+					(format = 'image/jpeg')
+						ifTrue: [ 
+							ok := true.
+						].
+				].
+			]
+	].
+
+	ok := false.
+	requests do: [ :request |
+		(request name = 'GetCapabilities')
+   			ifTrue: [ 
+				request formats do: [ :format |
+					(format = 'text/xml')
+						ifTrue: [ 
+							ok := true.
+						].
+				].
+			]
+	].
+
+	self assert: ok.
+]
+
 { #category : #testsGetMap }
 PharoOWSServiceWMSTest >> testSeveralLayers [
 

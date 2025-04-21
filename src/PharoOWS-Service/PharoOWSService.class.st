@@ -56,6 +56,13 @@ PharoOWSService >> layers [
 ]
 
 { #category : #accessing }
+PharoOWSService >> requests [
+
+	^PharoOWSServiceRequest fromXMLList:
+		((self capabilities document descendantElementsNamed: 'Request') first elements)
+]
+
+{ #category : #accessing }
 PharoOWSService >> url [
 
 	^ url ifNil: [ url := 'localhost' ]
