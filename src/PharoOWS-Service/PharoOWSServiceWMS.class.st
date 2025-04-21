@@ -27,7 +27,7 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 	          '&HEIGHT=', aSize y printString.
 
 	result := self client get: self url , params.
-	(result isKindOf: String) 
+	(result isKindOf: String)
 		ifTrue: [ 
 			(Error new messageText: result) signal.
 		].

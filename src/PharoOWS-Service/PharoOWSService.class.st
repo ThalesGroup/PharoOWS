@@ -27,11 +27,11 @@ PharoOWSService class >> url: aUrl [
 { #category : #api }
 PharoOWSService >> capabilities [
 
-	| capabilitiesUrl xml |
+	| params xml |
 	capabilities ifNil: [
-		capabilitiesUrl := self url , '&REQUEST=GetCapabilities'.
-		xml := self client get: url.
-		capabilities := (XMLDOMParser parse: xml) document ].
+		params := '&REQUEST=GetCapabilities'.
+		xml := self client get: self url, params.
+		capabilities := (XMLDOMParser parse: xml) document].
 	^ capabilities
 ]
 
@@ -45,22 +45,6 @@ PharoOWSService >> client [
 PharoOWSService >> client: anObject [
 
 	client := anObject
-]
-
-{ #category : #api }
-PharoOWSService >> isRunning [
-
-	| isValid response |
-	isValid := false.
-
-	[ 
-		response := self client get: self url.
-   		isValid := response isSuccess
-	] on: ZnHttpUnsuccessful do: [ :ex |
-	   isValid := false
-	].
-
-	^ isValid
 ]
 
 { #category : #api }

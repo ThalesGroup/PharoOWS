@@ -9,6 +9,16 @@ Class {
 	#category : #'PharoOWS-Service-Tests'
 }
 
+{ #category : #testsGetCapabilities }
+PharoOWSServiceWMSTest >> testDocument [
+
+	| qc doc |
+	qc := PharoOWSServiceWMS new.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	doc := qc capabilities.
+	self assert: doc root name equals: 'WMS_Capabilities'.
+]
+
 { #category : #testsGetMap }
 PharoOWSServiceWMSTest >> testInvalidLayer [
 
@@ -25,6 +35,27 @@ PharoOWSServiceWMSTest >> testInvalidLayer [
 		   		   epsg: '3857'.
    ] raise: Error.
 
+]
+
+{ #category : #testsGetCapabilities }
+PharoOWSServiceWMSTest >> testLayers [
+
+	| qc layers ok |
+	qc := PharoOWSServiceWMS new.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	layers := qc layers.
+	self assert: layers isNotEmpty.
+	
+	ok := false.
+	layers do: [ :layer |
+		(layer title = 'Carte du relief')
+   			ifTrue: [ 
+				self assert: layer name equals: 'EL.GridCoverage'.
+				ok := true.
+			]
+	].
+
+	self assert: ok.
 ]
 
 { #category : #testsGetMap }
