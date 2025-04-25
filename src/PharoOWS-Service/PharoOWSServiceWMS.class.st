@@ -5,57 +5,37 @@ Class {
 }
 
 { #category : #api }
-PharoOWSServiceWMS >> baseUrl [
+PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 
-	| baseUrl |
-	baseUrl ifNil: [
-		baseUrl := 'http://' , self host , ':' , self port asString
-		           ,
-		           (self endpoint ifNil: [ '' ] ifNotNil: [ :e | '/' , e ]).
-		baseUrl := baseUrl, '?SERVICE=WMS'
+	| params bbox result layers |
+	
+	layers := ',' join: aLayerList.
+	
+	bbox := aBbox origin x printString , ',' ,
+	        aBbox origin y printString , ',',
+	        aBbox corner x printString , ',',
+	        aBbox corner y printString.
+
+	params := '&VERSION=1.3.0',
+				 '&REQUEST=GetMap',
+				 '&FORMAT=image/png',
+				 '&STYLES=&',
+				 '&LAYERS=', layers,
+	          '&BBOX=' , bbox,
+				 '&CRS=EPSG:' , aEPSG,
+	          '&WIDTH=' , aSize x printString,
+	          '&HEIGHT=', aSize y printString.
+
+	result := self client get: self url , params.
+	(result isKindOf: String)
+		ifTrue: [ 
+			(Error new messageText: result) signal.
 		].
-	^ baseUrl
+
+	^ Form fromBinaryStream: result readStream
 ]
 
-{ #category : #api }
-PharoOWSServiceWMS >> capabilities [
-
-	| url xml |
-	self isRunning ifFalse: [ self error: 'Server is not running' ].
-	capabilities ifNil: [
-		url := self baseUrl , '&REQUEST=GetCapabilities'.
-		xml := self client get: url.
-		capabilities := (XMLDOMParser parse: xml) document ].
-	^ capabilities
-]
-
-{ #category : #api }
-PharoOWSServiceWMS >> map: aLayerList bounds: aBounds size: aSize coordinates: aCoordinates [
-
-	| layerList layerListWs url bbox img |
-	self isRunning ifFalse: [ self error: 'Server is not running' ].
-	layerList := aLayerList collect: [ :e | e asString ].
-	layerListWs := String new writeStream.
-	layerList
-		do: [ :e | layerListWs nextPutAll: e ]
-		separatedBy: [ layerListWs nextPut: $, ].
-	bbox := aBounds origin x printString , ','
-	        , aBounds origin y printString , ','
-	        , aBounds corner x printString , ','
-	        , aBounds corner y printString.
-	url := self baseUrl , '&VERSION=1.3.0&REQUEST=GetMap&LAYERS='
-	       , layerListWs contents , '&BBOX=' , bbox , '&CRS='
-	       , aCoordinates , '&WIDTH=' , aSize x printString, '&HEIGHT=' , aSize y printString.
-	img := self client get: url.
-	^ Form fromBinaryStream: img readStream.
-]
-
-{ #category : #api }
-PharoOWSServiceWMS >> map: aLayerList bounds: aBounds size: aSize epsg: aEPSGCoordinates [
-
-	^ self
-		  map: aLayerList
-		  bounds: aBounds
-		  size: aSize
-		  coordinates: 'EPSG:' , aEPSGCoordinates
+{ #category : #accessing }
+PharoOWSServiceWMS >> url [
+	^ super url, '?', 'SERVICE=WMS' 
 ]
