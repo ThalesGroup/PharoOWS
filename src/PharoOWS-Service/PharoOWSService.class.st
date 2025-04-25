@@ -50,7 +50,7 @@ PharoOWSService >> client: anObject [
 { #category : #api }
 PharoOWSService >> layers [
 
-	^PharoOWSServiceLayer fromXMLList:
+	^PharoOWSServiceCapabilitiesLayer fromXMLList:
 		((self capabilities document descendantElementsNamed: 'Layer') first
 			 descendantElementsNamed: 'Layer')
 ]
@@ -58,7 +58,7 @@ PharoOWSService >> layers [
 { #category : #accessing }
 PharoOWSService >> requests [
 
-	^PharoOWSServiceRequest fromXMLList:
+	^PharoOWSServiceCapabilitiesRequest fromXMLList:
 		((self capabilities document descendantElementsNamed: 'Request') first elements)
 ]
 
