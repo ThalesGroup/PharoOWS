@@ -137,3 +137,14 @@ PharoOWSServiceWMSTest >> testSeveralLayers [
 			
 	"self image: map"
 ]
+
+{ #category : #tests }
+PharoOWSServiceWMSTest >> testVersion [
+
+	| qc version |
+	qc := PharoOWSServiceWMS new.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	
+	version := qc version.
+	self assert: version equals: '1.3.0'.
+]

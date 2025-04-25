@@ -5,15 +5,16 @@ Class {
 }
 
 { #category : #api }
-PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix row: aRow col: aCol [
+PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix row: aRow col: aCol format: aFormat style: aStyle [
 
 	| params result layers |
 	
 	layers := ',' join: aLayerList.
 
 	params := '&REQUEST=GetTile',
-				 '&FORMAT=image/jpeg',
-				 '&STYLE=normal',
+				 '&FORMAT=', aFormat,
+				 '&VERSION=', self version,
+				 '&STYLE=', aStyle,
 				 '&LAYER=', layers,
 				 '&TILEMATRIXSET=' , aMatrixSet,
 				 '&TILEMATRIX=' , aMatrix printString,
@@ -32,5 +33,5 @@ PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix ro
 
 { #category : #accessing }
 PharoOWSServiceWMTS >> url [
-	^ super url, '?', 'SERVICE=WMTS&VERSION=1.0.0' 
+	^ super url, '?', 'SERVICE=WMTS'
 ]

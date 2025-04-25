@@ -73,3 +73,9 @@ PharoOWSService >> url: anObject [
 
 	url := anObject
 ]
+
+{ #category : #versions }
+PharoOWSService >> version [
+
+	^ self capabilities root attributeAt: 'version' ifAbsent: [ '' ]
+]
