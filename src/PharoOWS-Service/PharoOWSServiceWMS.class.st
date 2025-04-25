@@ -16,8 +16,7 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 	        aBbox corner x printString , ',',
 	        aBbox corner y printString.
 
-	params := '&VERSION=1.3.0',
-				 '&REQUEST=GetMap',
+	params := '&REQUEST=GetMap',
 				 '&FORMAT=image/png',
 				 '&STYLES=&',
 				 '&LAYERS=', layers,
@@ -37,5 +36,5 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 
 { #category : #accessing }
 PharoOWSServiceWMS >> url [
-	^ super url, '?', 'SERVICE=WMS' 
+	^ super url, '?', 'SERVICE=WMS&VERSION=1.3.0' 
 ]
