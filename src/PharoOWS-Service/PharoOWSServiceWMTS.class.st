@@ -4,6 +4,13 @@ Class {
 	#category : #'PharoOWS-Service'
 }
 
+{ #category : #accessing }
+PharoOWSServiceWMTS >> operations [
+	
+	^PharoOWSServiceWMTSOperation fromXMLList:
+		((self capabilities document descendantElementsNamed: 'ows:OperationsMetadata') first elements)
+]
+
 { #category : #api }
 PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix row: aRow col: aCol format: aFormat style: aStyle [
 

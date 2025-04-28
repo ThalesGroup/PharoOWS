@@ -36,6 +36,13 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 ]
 
 { #category : #accessing }
+PharoOWSServiceWMS >> operations [
+
+	^PharoOWSServiceWMSOperation fromXMLList:
+		((self capabilities document descendantElementsNamed: 'Request') first elements)
+]
+
+{ #category : #accessing }
 PharoOWSServiceWMS >> url [
 	^ super url, '?', 'SERVICE=WMS' 
 ]

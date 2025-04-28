@@ -6,7 +6,7 @@ Class {
 	#category : #'PharoOWS-Service-Tests'
 }
 
-{ #category : #tests }
+{ #category : #testsGetTile }
 PharoOWSServiceWMTSTest >> testGetTile [
 
 	| qc tile |
@@ -29,7 +29,20 @@ PharoOWSServiceWMTSTest >> testGetTile [
 	self image: tile
 ]
 
-{ #category : #tests }
+{ #category : #testsGetCapabilities }
+PharoOWSServiceWMTSTest >> testOperations [
+
+	| qc requests gettile |
+	qc := PharoOWSServiceWMTS new.
+	qc url: 'https://data.geopf.fr/wmts'.
+	requests := qc operations.
+   self assert: requests size equals: 3.
+
+	gettile := requests detect: [ :request | request name = 'GetTile' ].
+	self assert: gettile name equals: 'GetTile'.
+]
+
+{ #category : #testsGetCapabilities }
 PharoOWSServiceWMTSTest >> testVersion [
 
 	| qc version |
