@@ -26,7 +26,7 @@ PharoOWSServiceWMTSTest >> testGetTile [
 	self assert: tile height equals: 256.
 	self assert: tile width equals: 256.
 
-	self image: tile
+	"self image: tile"
 ]
 
 { #category : #testsGetCapabilities }
