@@ -16,9 +16,9 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 	        aBbox corner x printString , ',',
 	        aBbox corner y printString.
 
-	params := '&VERSION=1.3.0',
-				 '&REQUEST=GetMap',
+	params := '&REQUEST=GetMap',
 				 '&FORMAT=image/png',
+				 '&VERSION=', self version,
 				 '&STYLES=&',
 				 '&LAYERS=', layers,
 	          '&BBOX=' , bbox,
@@ -33,6 +33,13 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 		].
 
 	^ Form fromBinaryStream: result readStream
+]
+
+{ #category : #accessing }
+PharoOWSServiceWMS >> operations [
+
+	^PharoOWSServiceWMSOperation fromXMLList:
+		((self capabilities document descendantElementsNamed: 'Request') first elements)
 ]
 
 { #category : #accessing }

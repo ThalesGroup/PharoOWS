@@ -50,16 +50,9 @@ PharoOWSService >> client: anObject [
 { #category : #api }
 PharoOWSService >> layers [
 
-	^PharoOWSServiceCapabilitiesLayer fromXMLList:
+	^PharoOWSServiceWMSLayer fromXMLList:
 		((self capabilities document descendantElementsNamed: 'Layer') first
 			 descendantElementsNamed: 'Layer')
-]
-
-{ #category : #accessing }
-PharoOWSService >> requests [
-
-	^PharoOWSServiceCapabilitiesRequest fromXMLList:
-		((self capabilities document descendantElementsNamed: 'Request') first elements)
 ]
 
 { #category : #accessing }
@@ -72,4 +65,10 @@ PharoOWSService >> url [
 PharoOWSService >> url: anObject [
 
 	url := anObject
+]
+
+{ #category : #versions }
+PharoOWSService >> version [
+
+	^ self capabilities root attributeAt: 'version' ifAbsent: [ '' ]
 ]

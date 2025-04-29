@@ -79,12 +79,12 @@ PharoOWSServiceWMSTest >> testOneLayer [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMSTest >> testRequests [
+PharoOWSServiceWMSTest >> testOperations [
 
 	| qc requests ok x |
 	qc := PharoOWSServiceWMS new.
 	qc url: 'https://data.geopf.fr/wms-r'.
-	requests := qc requests.
+	requests := qc operations.
 	self assert: requests isNotEmpty.
 
 	x := requests detect: [ :request | request name = 'GetMap' ].
@@ -136,4 +136,15 @@ PharoOWSServiceWMSTest >> testSeveralLayers [
 	self assert: map width equals: size x.
 			
 	"self image: map"
+]
+
+{ #category : #testsGetCapabilities }
+PharoOWSServiceWMSTest >> testVersion [
+
+	| qc version |
+	qc := PharoOWSServiceWMS new.
+	qc url: 'https://data.geopf.fr/wms-r'.
+	
+	version := qc version.
+	self assert: version equals: '1.3.0'.
 ]
