@@ -2,9 +2,9 @@ Class {
 	#name : #PharoOWSService,
 	#superclass : #Object,
 	#instVars : [
+		'capabilities',
 		'url',
-		'client',
-		'capabilities'
+		'client'
 	],
 	#category : #'PharoOWS-Service'
 }
