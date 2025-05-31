@@ -5,11 +5,25 @@ Class {
 }
 
 { #category : #api }
-PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
+PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat [
 
-	| params bbox result layers |
+	^ self map: aLayerList
+		    bbox: aBbox
+		    size: aSize
+		    epsg: aEPSG
+			 format: aFormat
+			 style: {}
+			 transparent: false.
+]
+
+{ #category : #api }
+PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat style: aStyleList transparent: aTransparent [
+
+	| params bbox result layers styles |
 	
 	layers := ',' join: aLayerList.
+	
+	styles := ',' join: aStyleList.
 	
 	bbox := aBbox origin x printString , ',' ,
 	        aBbox origin y printString , ',',
@@ -17,14 +31,17 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG [
 	        aBbox corner y printString.
 
 	params := '&REQUEST=GetMap',
-				 '&FORMAT=image/png',
+				 '&FORMAT=', aFormat,
 				 '&VERSION=', self version,
-				 '&STYLES=&',
+				 '&STYLES=', styles,
 				 '&LAYERS=', layers,
 	          '&BBOX=' , bbox,
 				 '&CRS=EPSG:' , aEPSG,
 	          '&WIDTH=' , aSize x printString,
-	          '&HEIGHT=', aSize y printString.
+	          '&HEIGHT=', aSize y printString,
+				 '&TRANSPARENT=', aTransparent asString asUppercase.
+
+   Transcript show: params; cr.
 
 	result := self client get: self url , params.
 	(result isKindOf: String)
