@@ -81,11 +81,11 @@ made them essential de facto standards for serving map tiles.
 PharoOWS is split into several packages according to the supported protocols
 and standards:
 
-| Package           | Supported Protocols               | Status           | Type                 |
-|-------------------|-----------------------------------|------------------|----------------------|
-| PharoOWS-TMS      | TMS                               | In development   | De facto standard    |
-| PharoOWS-Service  | WMS, WMTS                         | In development   | Official OGC         |
-| PharoOWS-API      | OGC API - Processes               | Upcoming         | Official OGC (modern)|
+| Package           | Type                  | Supported Protocols               | Status           |
+|-------------------|-----------------------|-----------------------------------|------------------|
+| PharoOWS-TMS      | De facto standard     | TMS                               | In development   |
+| PharoOWS-Service  | Official OGC          | WMS, WMTS                         | In development   |
+| PharoOWS-API      | Official OGC (modern) | OGC API - Processes               | Upcoming         |
 
 
 :loudspeaker: PharoOWS is still in development, so new protocols and standards
@@ -137,7 +137,8 @@ map := wms
   map: { 'EL.GridCoverage'. 'FORETS.PUBLIQUES' }
   bbox: (-546079 @ 6126282 corner: -398839 @ 6212047)
   size: 800 @ 600
-  epsg: '3857'.
+  epsg: '3857'
+  format: 'image/png'.
 
 # 'map' is a Bitmap
 ```
