@@ -67,7 +67,8 @@ PharoOWSServiceWMSTest >> testOneLayer [
 		       map: { 'GEOGRAPHICALGRIDSYSTEMS.COASTALMAPS' }
 		       bbox: (-509969 @ 6164380 corner: -504505 @ 6167923)
 		       size: size
-		       epsg: '3857'.
+		       epsg: '3857'
+		       format: 'image/png'.
 
 	self assert: map height equals: size y.
 	self assert: map width equals: size x
@@ -113,7 +114,8 @@ PharoOWSServiceWMSTest >> testSeveralLayers [
 		       map: { 'EL.GridCoverage'. 'FORETS.PUBLIQUES' }
 		       bbox: (-546079 @ 6126282 corner: -398839 @ 6212047)
 		       size: size
-		       epsg: '3857'.
+		       epsg: '3857'
+		       format: 'image/png'.
 
 	self assert: map height equals: size y.
 	self assert: map width equals: size x
