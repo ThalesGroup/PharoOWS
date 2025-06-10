@@ -1,27 +1,27 @@
 Class {
-	#name : #BaselineOfPharoWMS,
+	#name : #BaselineOfPharoOWS,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfPharoWMS
+	#category : #BaselineOfPharoOWS
 }
 
 { #category : #baselines }
-BaselineOfPharoWMS >> baseline: spec [
+BaselineOfPharoOWS >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
 		do: [
 			"Dependencies"
 			self dependencies: spec.
-			
+
 			"Packages"
 			spec
-				package: 'PharoWMS-QGIS';
-				package: 'PharoWMS-QGIS-Tests' with: [ spec requires: #('PharoWMS-QGIS') ].
+				package: 'PharoOWS-Service';
+				package: 'PharoOWS-Service-Tests' with: [ spec requires: #('PharoOWS-Service') ].
 		  ]
 ]
 
 { #category : #baselines }
-BaselineOfPharoWMS >> dependencies: spec [
+BaselineOfPharoOWS >> dependencies: spec [
 
 	spec baseline: 'XMLParser' with: [
 		spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].

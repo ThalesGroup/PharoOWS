@@ -1,0 +1,14 @@
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'PharoOWS',
+      #directory : 'src',
+      #platforms : [ #pharo ],
+      #registerInIceberg : true
+    }
+  ],
+
+  #testing : {
+    #defaultTimeout : 45
+  }
+}
