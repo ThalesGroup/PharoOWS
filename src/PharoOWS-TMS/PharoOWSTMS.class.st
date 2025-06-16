@@ -2,24 +2,10 @@ Class {
 	#name : #PharoOWSTMS,
 	#superclass : #Object,
 	#instVars : [
-		'client',
 		'url'
 	],
 	#category : #'PharoOWS-TMS'
 }
-
-{ #category : #accessing }
-PharoOWSTMS >> client [
-
-	client ifNil: [ client := ZnClient new ].
-	^ client
-]
-
-{ #category : #accessing }
-PharoOWSTMS >> client: anObject [
-
-	client := anObject
-]
 
 { #category : #accessing }
 PharoOWSTMS >> tile: aX y: aY z: aZ [
@@ -29,7 +15,9 @@ PharoOWSTMS >> tile: aX y: aY z: aZ [
 	tileUrl := tileUrl copyReplaceAll: '{y}' with: aY printString.
 	tileUrl := tileUrl copyReplaceAll: '{z}' with: aZ printString.
 
-	result := self client get: tileUrl.
+	result := ZnClient new 
+		url: tileUrl;
+		get.
 	(result isKindOf: String) ifTrue: [
 		(Error new messageText: result) signal ].
 
