@@ -1,6 +1,6 @@
 Class {
-	#name : #PharoOWSServiceWMSLayer,
-	#superclass : #PharoOWSServiceXMLElement,
+	#name : #OWSServiceWMSLayer,
+	#superclass : #OWSServiceXMLElement,
 	#instVars : [
 		'title'
 	],
@@ -8,20 +8,20 @@ Class {
 }
 
 { #category : #parsing }
-PharoOWSServiceWMSLayer >> parseElement [
+OWSServiceWMSLayer >> parseElement [
 
 	name := (self xmlElement elementAt:'Name') strings first.
 	title := (self xmlElement elementAt: 'Title') strings first.
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMSLayer >> title [
+OWSServiceWMSLayer >> title [
 
 	^ title
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMSLayer >> title: anObject [
+OWSServiceWMSLayer >> title: anObject [
 
 	title := anObject
 ]

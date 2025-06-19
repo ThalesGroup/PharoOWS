@@ -1,5 +1,5 @@
 Class {
-	#name : #PharoOWSTMS,
+	#name : #OWSTMS,
 	#superclass : #Object,
 	#instVars : [
 		'url'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-PharoOWSTMS >> tile: aX y: aY z: aZ [
+OWSTMS >> tile: aX y: aY z: aZ [
 
 	| tileUrl result |
 	tileUrl := self url copyReplaceAll: '{x}' with: aX printString.
@@ -25,13 +25,13 @@ PharoOWSTMS >> tile: aX y: aY z: aZ [
 ]
 
 { #category : #accessing }
-PharoOWSTMS >> url [
+OWSTMS >> url [
 
 	^ url ifNil: [ url := 'localhost' ]
 ]
 
 { #category : #accessing }
-PharoOWSTMS >> url: anObject [
+OWSTMS >> url: anObject [
 
 	url := anObject
 ]

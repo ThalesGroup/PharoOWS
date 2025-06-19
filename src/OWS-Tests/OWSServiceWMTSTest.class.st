@@ -1,5 +1,5 @@
 Class {
-	#name : #PharoOWSServiceWMTSTest,
+	#name : #OWSServiceWMTSTest,
 	#superclass : #TestCase,
 	#traits : 'TTestTools',
 	#classTraits : 'TTestTools classTrait',
@@ -7,10 +7,10 @@ Class {
 }
 
 { #category : #testsGetTile }
-PharoOWSServiceWMTSTest >> testGetTile [
+OWSServiceWMTSTest >> testGetTile [
 
 	| wmts tile |
-	wmts := PharoOWSServiceWMTS new.
+	wmts := OWSServiceWMTS new.
 	wmts url: 'https://data.geopf.fr/wmts'.
 
 	tile := wmts
@@ -30,10 +30,10 @@ PharoOWSServiceWMTSTest >> testGetTile [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMTSTest >> testOperations [
+OWSServiceWMTSTest >> testOperations [
 
 	| wmts requests gettile |
-	wmts := PharoOWSServiceWMTS new.
+	wmts := OWSServiceWMTS new.
 	wmts url: 'https://data.geopf.fr/wmts'.
 	requests := wmts operations.
 	self assert: requests size equals: 3.
@@ -43,10 +43,10 @@ PharoOWSServiceWMTSTest >> testOperations [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMTSTest >> testVersion [
+OWSServiceWMTSTest >> testVersion [
 
 	| wmts version |
-	wmts := PharoOWSServiceWMTS new.
+	wmts := OWSServiceWMTS new.
 	wmts url: 'https://data.geopf.fr/wmts'.
 	
 	version := wmts version.

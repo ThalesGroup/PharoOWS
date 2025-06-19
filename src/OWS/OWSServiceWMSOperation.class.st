@@ -1,6 +1,6 @@
 Class {
-	#name : #PharoOWSServiceWMSOperation,
-	#superclass : #PharoOWSServiceXMLElement,
+	#name : #OWSServiceWMSOperation,
+	#superclass : #OWSServiceXMLElement,
 	#instVars : [
 		'formats'
 	],
@@ -8,19 +8,19 @@ Class {
 }
 
 { #category : #accessing }
-PharoOWSServiceWMSOperation >> formats [
+OWSServiceWMSOperation >> formats [
 
 	^ formats
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMSOperation >> formats: anObject [
+OWSServiceWMSOperation >> formats: anObject [
 
 	formats := anObject
 ]
 
 { #category : #parsing }
-PharoOWSServiceWMSOperation >> parseElement [
+OWSServiceWMSOperation >> parseElement [
 
 	| text |
 	name := (self xmlElement name).
