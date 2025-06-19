@@ -1,7 +1,7 @@
 Class {
 	#name : #PharoOWSServiceWMTSOperation,
 	#superclass : #PharoOWSServiceXMLElement,
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #parsing }

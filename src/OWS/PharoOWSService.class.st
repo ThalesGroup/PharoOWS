@@ -6,7 +6,7 @@ Class {
 		'url',
 		'client'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #'instance creation' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #PharoOWSServiceWMTS,
 	#superclass : #PharoOWSService,
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #accessing }

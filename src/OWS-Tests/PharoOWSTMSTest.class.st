@@ -1,7 +1,7 @@
 Class {
 	#name : #PharoOWSTMSTest,
 	#superclass : #TestCase,
-	#category : #'PharoOWS-TMS-Tests'
+	#category : #'OWS-Tests'
 }
 
 { #category : #tests }

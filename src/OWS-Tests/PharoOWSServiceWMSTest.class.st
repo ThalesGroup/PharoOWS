@@ -6,7 +6,7 @@ Class {
 	#superclass : #TestCase,
 	#traits : 'TTestTools',
 	#classTraits : 'TTestTools classTrait',
-	#category : #'PharoOWS-Service-Tests'
+	#category : #'OWS-Tests'
 }
 
 { #category : #testsGetCapabilities }

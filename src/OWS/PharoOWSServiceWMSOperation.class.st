@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'formats'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #accessing }

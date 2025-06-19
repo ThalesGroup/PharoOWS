@@ -5,7 +5,7 @@ Class {
 		'xmlElement',
 		'name'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #'instance creation' }

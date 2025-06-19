@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'url'
 	],
-	#category : #'PharoOWS-TMS'
+	#category : #'OWS-TMS'
 }
 
 { #category : #accessing }

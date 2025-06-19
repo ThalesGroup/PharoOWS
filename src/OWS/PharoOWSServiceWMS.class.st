@@ -1,7 +1,7 @@
 Class {
 	#name : #PharoOWSServiceWMS,
 	#superclass : #PharoOWSService,
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #api }

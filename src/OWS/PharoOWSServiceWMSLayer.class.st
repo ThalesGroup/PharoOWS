@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'title'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #parsing }
