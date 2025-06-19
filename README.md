@@ -23,7 +23,7 @@ PharoOWS can be installed using [Metacello](https://github.com/Metacello/metacel
 
 ```smalltalk
 Metacello new
-  baseline: 'PharoOWS';
+  baseline: 'OWS';
   repository: 'github://OpenSmock/PharoOWS:main';
   load.
 ```

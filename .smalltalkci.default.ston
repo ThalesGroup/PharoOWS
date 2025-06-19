@@ -1,14 +1,15 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'PharoOWS',
+      #baseline : 'OWS',
       #directory : 'src',
-      #platforms : [ #pharo ],
-      #registerInIceberg : true
+      #platforms : [ #pharo ]
     }
   ],
-
   #testing : {
+    #include : {
+      #packages : [ 'OWS*-Tests' ]
+    }
     #defaultTimeout : 45
   }
 }
