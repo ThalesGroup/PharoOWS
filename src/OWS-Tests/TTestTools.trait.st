@@ -1,6 +1,6 @@
 Trait {
 	#name : #TTestTools,
-	#category : #'PharoOWS-Service-Tests'
+	#category : #'OWS-Tests'
 }
 
 { #category : #accessing }

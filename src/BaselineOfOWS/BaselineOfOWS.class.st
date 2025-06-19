@@ -1,11 +1,11 @@
 Class {
-	#name : #BaselineOfPharoOWS,
+	#name : #BaselineOfOWS,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfPharoOWS
+	#category : #BaselineOfOWS
 }
 
 { #category : #baselines }
-BaselineOfPharoOWS >> baseline: spec [
+BaselineOfOWS >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
@@ -15,13 +15,13 @@ BaselineOfPharoOWS >> baseline: spec [
 
 			"Packages"
 			spec
-				package: 'PharoOWS-Service';
-				package: 'PharoOWS-Service-Tests' with: [ spec requires: #('PharoOWS-Service') ].
+				package: 'OWS';
+				package: 'OWS-Tests' with: [ spec requires: #('OWS') ].
 		  ]
 ]
 
 { #category : #baselines }
-BaselineOfPharoOWS >> dependencies: spec [
+BaselineOfOWS >> dependencies: spec [
 
 	spec baseline: 'XMLParser' with: [
 		spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].

@@ -1,11 +1,11 @@
 Class {
-	#name : #PharoOWSServiceWMS,
-	#superclass : #PharoOWSService,
-	#category : #'PharoOWS-Service'
+	#name : #OWSServiceWMS,
+	#superclass : #OWSService,
+	#category : #'OWS-Service'
 }
 
 { #category : #api }
-PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat [
+OWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat [
 
 	^ self map: aLayerList
 		    bbox: aBbox
@@ -17,7 +17,7 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format
 ]
 
 { #category : #api }
-PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat style: aStyleList transparent: aTransparent [
+OWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format: aFormat style: aStyleList transparent: aTransparent [
 
 	| params bbox result layers styles |
 	
@@ -53,13 +53,13 @@ PharoOWSServiceWMS >> map: aLayerList bbox: aBbox size: aSize epsg: aEPSG format
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMS >> operations [
+OWSServiceWMS >> operations [
 
-	^PharoOWSServiceWMSOperation fromXMLList:
+	^OWSServiceWMSOperation fromXMLList:
 		((self capabilities document descendantElementsNamed: 'Request') first elements)
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMS >> url [
+OWSServiceWMS >> url [
 	^ super url, '?', 'SERVICE=WMS' 
 ]

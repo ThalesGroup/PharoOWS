@@ -1,14 +1,14 @@
 Class {
-	#name : #PharoOWSTMS,
+	#name : #OWSTMS,
 	#superclass : #Object,
 	#instVars : [
 		'url'
 	],
-	#category : #'PharoOWS-TMS'
+	#category : #'OWS-TMS'
 }
 
 { #category : #accessing }
-PharoOWSTMS >> tile: aX y: aY z: aZ [
+OWSTMS >> tile: aX y: aY z: aZ [
 
 	| tileUrl result |
 	tileUrl := self url copyReplaceAll: '{x}' with: aX printString.
@@ -18,20 +18,20 @@ PharoOWSTMS >> tile: aX y: aY z: aZ [
 	result := ZnClient new 
 		url: tileUrl;
 		get.
-	(result isKindOf: String) ifTrue: [
-		(Error new messageText: result) signal ].
+	
+	result isString ifTrue: [ (Error new messageText: result) signal ].
 
 	^ Form fromBinaryStream: result readStream
 ]
 
 { #category : #accessing }
-PharoOWSTMS >> url [
+OWSTMS >> url [
 
 	^ url ifNil: [ url := 'localhost' ]
 ]
 
 { #category : #accessing }
-PharoOWSTMS >> url: anObject [
+OWSTMS >> url: anObject [
 
 	url := anObject
 ]

@@ -1,14 +1,14 @@
 Class {
-	#name : #PharoOWSTMSTest,
+	#name : #OWSTMSTest,
 	#superclass : #TestCase,
-	#category : #'PharoOWS-TMS-Tests'
+	#category : #'OWS-Tests'
 }
 
 { #category : #tests }
-PharoOWSTMSTest >> testTile [
+OWSTMSTest >> testTile [
 
 	| tms tile |
-	tms := PharoOWSTMS new.
+	tms := OWSTMS new.
 	tms url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'.
 
 	tile := tms tile: 0 y: 0 z: 0.

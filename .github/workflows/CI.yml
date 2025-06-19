@@ -1,11 +1,11 @@
-name: Tests
+name: 'CI'
 
 on:
   push:
+    branches:
+      - 'main'
   pull_request:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * 1"   # Run every Monday at 08:00
+    types: [assigned, opened, synchronize, reopened]
 
 jobs:
   test:
@@ -26,7 +26,7 @@ jobs:
         with:
           smalltalk-image: ${{ matrix.smalltalk }}
       - name: Load in New Image and Run Tests
-        run: smalltalkci -s ${{ matrix.smalltalk }} .ci.ston
+        run: smalltalkci -s ${{ matrix.smalltalk }} .smalltalkci.default.ston
         shell: bash
         timeout-minutes: 10
         env:

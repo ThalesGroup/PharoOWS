@@ -1,15 +1,15 @@
 Class {
-	#name : #PharoOWSServiceXMLElement,
+	#name : #OWSServiceXMLElement,
 	#superclass : #Object,
 	#instVars : [
 		'xmlElement',
 		'name'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #'instance creation' }
-PharoOWSServiceXMLElement class >> fromXMLLayer: aXMLElement [
+OWSServiceXMLElement class >> fromXMLLayer: aXMLElement [
 
 	| tmp |
 	tmp := self new.
@@ -19,24 +19,24 @@ PharoOWSServiceXMLElement class >> fromXMLLayer: aXMLElement [
 ]
 
 { #category : #'instance creation' }
-PharoOWSServiceXMLElement class >> fromXMLList: aList [
+OWSServiceXMLElement class >> fromXMLList: aList [
 ^aList collect: [ :e | self fromXMLLayer: e ].
 ]
 
 { #category : #accessing }
-PharoOWSServiceXMLElement >> name [
+OWSServiceXMLElement >> name [
 
 	^ name
 ]
 
 { #category : #accessing }
-PharoOWSServiceXMLElement >> name: anObject [
+OWSServiceXMLElement >> name: anObject [
 
 	name := anObject
 ]
 
 { #category : #printing }
-PharoOWSServiceXMLElement >> printOn: aStream [
+OWSServiceXMLElement >> printOn: aStream [
 
 	super printOn: aStream.
 	aStream nextPutAll: ' <'.
@@ -45,13 +45,13 @@ PharoOWSServiceXMLElement >> printOn: aStream [
 ]
 
 { #category : #accessing }
-PharoOWSServiceXMLElement >> xmlElement [
+OWSServiceXMLElement >> xmlElement [
 
 	^ xmlElement
 ]
 
 { #category : #accessing }
-PharoOWSServiceXMLElement >> xmlElement: anObject [
+OWSServiceXMLElement >> xmlElement: anObject [
 
 	xmlElement := anObject
 ]

@@ -2,28 +2,28 @@
 A PharoOWSServiceWMSTest is a test class for testing the behavior of PharoOWSServiceWMS
 "
 Class {
-	#name : #PharoOWSServiceWMSTest,
+	#name : #OWSServiceWMSTest,
 	#superclass : #TestCase,
 	#traits : 'TTestTools',
 	#classTraits : 'TTestTools classTrait',
-	#category : #'PharoOWS-Service-Tests'
+	#category : #'OWS-Tests'
 }
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMSTest >> testDocument [
+OWSServiceWMSTest >> testDocument [
 
 	| wms doc |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	doc := wms capabilities.
 	self assert: doc root name equals: 'WMS_Capabilities'
 ]
 
 { #category : #testsGetMap }
-PharoOWSServiceWMSTest >> testInvalidLayer [
+OWSServiceWMSTest >> testInvalidLayer [
 
 	| wms map size |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	size := 800 @ 600.
 	wms url: 'https://data.geopf.fr/wms-r'.
 
@@ -38,10 +38,10 @@ PharoOWSServiceWMSTest >> testInvalidLayer [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMSTest >> testLayers [
+OWSServiceWMSTest >> testLayers [
 
 	| wms layers ok |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	layers := wms layers.
 	self assert: layers isNotEmpty.
@@ -56,10 +56,10 @@ PharoOWSServiceWMSTest >> testLayers [
 ]
 
 { #category : #testsGetMap }
-PharoOWSServiceWMSTest >> testOneLayer [
+OWSServiceWMSTest >> testOneLayer [
 
 	| wms map size |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	wms url: 'https://data.geopf.fr/wms-r'.
 
 	size := 800 @ 600.
@@ -77,10 +77,10 @@ PharoOWSServiceWMSTest >> testOneLayer [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMSTest >> testOperations [
+OWSServiceWMSTest >> testOperations [
 
 	| wms requests ok x |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	requests := wms operations.
 	self assert: requests isNotEmpty.
@@ -104,10 +104,10 @@ PharoOWSServiceWMSTest >> testOperations [
 ]
 
 { #category : #testsGetMap }
-PharoOWSServiceWMSTest >> testSeveralLayers [
+OWSServiceWMSTest >> testSeveralLayers [
 
 	| wms map size |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	size := 800 @ 600.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	map := wms
@@ -124,10 +124,10 @@ PharoOWSServiceWMSTest >> testSeveralLayers [
 ]
 
 { #category : #testsGetCapabilities }
-PharoOWSServiceWMSTest >> testVersion [
+OWSServiceWMSTest >> testVersion [
 
 	| wms version |
-	wms := PharoOWSServiceWMS new.
+	wms := OWSServiceWMS new.
 	wms url: 'https://data.geopf.fr/wms-r'.
 
 	version := wms version.

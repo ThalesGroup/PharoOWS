@@ -1,18 +1,18 @@
 Class {
-	#name : #PharoOWSServiceWMTS,
-	#superclass : #PharoOWSService,
-	#category : #'PharoOWS-Service'
+	#name : #OWSServiceWMTS,
+	#superclass : #OWSService,
+	#category : #'OWS-Service'
 }
 
 { #category : #accessing }
-PharoOWSServiceWMTS >> operations [
+OWSServiceWMTS >> operations [
 	
-	^PharoOWSServiceWMTSOperation fromXMLList:
+	^OWSServiceWMTSOperation fromXMLList:
 		((self capabilities document descendantElementsNamed: 'ows:OperationsMetadata') first elements)
 ]
 
 { #category : #api }
-PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix row: aRow col: aCol format: aFormat style: aStyle [
+OWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix row: aRow col: aCol format: aFormat style: aStyle [
 
 	| params result layers |
 	
@@ -39,6 +39,6 @@ PharoOWSServiceWMTS >> tile: aLayerList matrixset: aMatrixSet matrix: aMatrix ro
 ]
 
 { #category : #accessing }
-PharoOWSServiceWMTS >> url [
+OWSServiceWMTS >> url [
 	^ super url, '?', 'SERVICE=WMTS'
 ]

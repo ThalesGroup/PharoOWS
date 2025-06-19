@@ -1,21 +1,21 @@
 Class {
-	#name : #PharoOWSService,
+	#name : #OWSService,
 	#superclass : #Object,
 	#instVars : [
 		'capabilities',
 		'url',
 		'client'
 	],
-	#category : #'PharoOWS-Service'
+	#category : #'OWS-Service'
 }
 
 { #category : #'instance creation' }
-PharoOWSService class >> new [
+OWSService class >> new [
 ^self url:'localhost'
 ]
 
 { #category : #'instance creation' }
-PharoOWSService class >> url: aUrl [
+OWSService class >> url: aUrl [
 	| qc |
 	qc  := self basicNew.
 	qc
@@ -25,7 +25,7 @@ PharoOWSService class >> url: aUrl [
 ]
 
 { #category : #api }
-PharoOWSService >> capabilities [
+OWSService >> capabilities [
 
 	| params xml |
 	capabilities ifNil: [
@@ -36,39 +36,39 @@ PharoOWSService >> capabilities [
 ]
 
 { #category : #accessing }
-PharoOWSService >> client [
+OWSService >> client [
 	client ifNil:[client := ZnClient new].
 	^ client
 ]
 
 { #category : #accessing }
-PharoOWSService >> client: anObject [
+OWSService >> client: anObject [
 
 	client := anObject
 ]
 
 { #category : #api }
-PharoOWSService >> layers [
+OWSService >> layers [
 
-	^PharoOWSServiceWMSLayer fromXMLList:
+	^OWSServiceWMSLayer fromXMLList:
 		((self capabilities document descendantElementsNamed: 'Layer') first
 			 descendantElementsNamed: 'Layer')
 ]
 
 { #category : #accessing }
-PharoOWSService >> url [
+OWSService >> url [
 
 	^ url ifNil: [ url := 'localhost' ]
 ]
 
 { #category : #accessing }
-PharoOWSService >> url: anObject [
+OWSService >> url: anObject [
 
 	url := anObject
 ]
 
 { #category : #versions }
-PharoOWSService >> version [
+OWSService >> version [
 
 	^ self capabilities root attributeAt: 'version' ifAbsent: [ '' ]
 ]
