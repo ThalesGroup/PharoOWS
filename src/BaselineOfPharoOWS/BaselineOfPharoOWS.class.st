@@ -16,7 +16,9 @@ BaselineOfPharoOWS >> baseline: spec [
 			"Packages"
 			spec
 				package: 'PharoOWS-Service';
-				package: 'PharoOWS-Service-Tests' with: [ spec requires: #('PharoOWS-Service') ].
+				package: 'PharoOWS-TMS';
+				package: 'PharoOWS-Service-Tests' with: [ spec requires: #('PharoOWS-Service') ];
+				package: 'PharoOWS-TMS-Tests' with: [ spec requires: #('PharoOWS-TMS') ].
 		  ]
 ]
 
