@@ -18,8 +18,8 @@ OWSTMS >> tile: aX y: aY z: aZ [
 	result := ZnClient new 
 		url: tileUrl;
 		get.
-	(result isKindOf: String) ifTrue: [
-		(Error new messageText: result) signal ].
+	
+	result isString ifTrue: [ (Error new messageText: result) signal ].
 
 	^ Form fromBinaryStream: result readStream
 ]
