@@ -10,6 +10,5 @@ SmalltalkCISpec {
     #include : {
       #packages : [ 'OWS*-Tests' ]
     }
-    #defaultTimeout : 45
   }
 }
