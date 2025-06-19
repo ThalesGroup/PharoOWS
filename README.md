@@ -4,7 +4,7 @@
 [![Pharo 12](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 13](https://img.shields.io/badge/Pharo-13-%23aac9ff.svg)](https://pharo.org/download)
 
-[![Unit tests](https://github.com/OpenSmock/PharoOWS/actions/workflows/test.yml/badge.svg)](https://github.com/OpenSmock/PharoOWS/actions/workflows/test.yml)
+[![Unit tests](https://github.com/ThalesGroup/PharoOWS/actions/workflows/test.yml/badge.svg)](https://github.com/ThalesGroup/PharoOWS/actions/workflows/test.yml)
 
 A variety of protocols and standards exist to enable communication with map
 servers and access geographic data in both raster and vector formats. Defined
@@ -24,7 +24,7 @@ PharoOWS can be installed using [Metacello](https://github.com/Metacello/metacel
 ```smalltalk
 Metacello new
   baseline: 'OWS';
-  repository: 'github://OpenSmock/PharoOWS:main';
+  repository: 'github://ThalesGroup/PharoOWS:main';
   load.
 ```
 
