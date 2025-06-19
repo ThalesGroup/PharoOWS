@@ -83,9 +83,9 @@ and standards:
 
 | Package           | Type                  | Supported Protocols               | Status           |
 |-------------------|-----------------------|-----------------------------------|------------------|
-| PharoOWS-TMS      | De facto standard     | TMS                               | In development   |
-| PharoOWS-Service  | Official OGC          | WMS, WMTS                         | In development   |
-| PharoOWS-API      | Official OGC (modern) | OGC API - Processes               | Upcoming         |
+| OWS-TMS           | De facto standard     | TMS                               | In development   |
+| OWS-Service       | Official OGC          | WMS, WMTS                         | In development   |
+| OWS-API           | Official OGC (modern) | OGC API - Processes               | Upcoming         |
 
 
 :loudspeaker: PharoOWS is still in development, so new protocols and standards
@@ -99,16 +99,16 @@ will be added over time.
 | wms operations getmap layers size map |
 
 "Create a WMS client targeting the IGN WMS server"
-wms := PharoOWSServiceWMS new.
+wms := OWSServiceWMS new.
 wms url: 'https://data.geopf.fr/wms-r'.
 
 "Introspect the server capabilities"
 operations := wms operations.
 
 # 'operations' is a XMLOrderedList(
-#   a PharoOWSServiceWMSOperation <GetCapabilities>
-#   a PharoOWSServiceWMSOperation <GetMap>
-#   a PharoOWSServiceWMSOperation <GetFeatureInfo>
+#   a OWSServiceWMSOperation <GetCapabilities>
+#   a OWSServiceWMSOperation <GetMap>
+#   a OWSServiceWMSOperation <GetFeatureInfo>
 # )
 
 "Listing available image formats for maps"
@@ -127,8 +127,8 @@ getmap formats.
 layers := wms layers.
 
 # 'layers' is a XMLOrderedList(
-#   a PharoOWSServiceWMSLayer(ADMINEXPRESS-COG-CARTO.LATEST)
-#   a PharoOWSServiceWMSLayer(ADMINEXPRESS-COG.2017)
+#   a OWSServiceWMSLayer(ADMINEXPRESS-COG-CARTO.LATEST)
+#   a OWSServiceWMSLayer(ADMINEXPRESS-COG.2017)
 #   [...]
 # )
 
