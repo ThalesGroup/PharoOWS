@@ -1,14 +1,13 @@
 name: 'CI'
 
 on:
-  push:
-    branches:
-      - 'main'
-  pull_request:
-    types: [assigned, opened, synchronize, reopened]
+  pull_request: #necessary to display "check" step in a PR
+    types: [labeled]
+  workflow_dispatch: #manual trigger
 
 jobs:
   test:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.label.name == 'run-ci')
     strategy:
       # Default value means that a failure in one OS cancels all 
       fail-fast: false
