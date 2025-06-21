@@ -53,7 +53,7 @@ standards have been widely used for many years to ensure geospatial
 interoperability.
 
 ```console
-http://mapserver?SERVICE=WMS&REQUEST=GetMap&Layers=layer0,layer1
+http://mapserver?SERVICE=WMS&REQUEST=GetMap&LAYERS=layer0,layer1
 ```
 
 **Modern RESTful Services**
