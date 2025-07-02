@@ -7,6 +7,8 @@
 [![License](https://img.shields.io/github/license/ThalesGroup/PharoOWS.svg)](./LICENSE)
 [![Unit tests](https://github.com/ThalesGroup/PharoOWS/actions/workflows/CI.yml/badge.svg)](https://github.com/ThalesGroup/PharoOWS/actions/workflows/CI.yml)
 
+## :information_source: Get started
+
 A variety of protocols and standards exist to enable communication with map
 servers and access geographic data in both raster and vector formats. Defined
 by the [Open Geospatial Consortium (OGC)](https://www.ogc.org/), these
@@ -147,6 +149,12 @@ map := wms
 <p align="center">
   <img src="doc/wms.png" alt="WMS map" width="400"/>
 </p>
+
+
+## :bust_in_silhouette: Contributing
+
+If you are interested in contributing to the XXX project, start by reading the
+[CONTRIBUTING](CONTRIBUTING) guide.
 
 
 ## :page_facing_up: License
