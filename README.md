@@ -23,12 +23,12 @@ returned data.
 
 ## :books: Documentation
 
-Documentation is available on Github pages.
+Documentation is available at [docs/src](https://github.com/ThalesGroup/PharoOWS/tree/main/docs/src).
 
 
 ## :bust_in_silhouette: Contributing
 
-If you are interested in contributing to the XXX project, start by reading the
+If you are interested in contributing to the PharoOWS project, start by reading the
 [CONTRIBUTING](CONTRIBUTING) guide.
 
 
