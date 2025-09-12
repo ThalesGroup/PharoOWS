@@ -1,14 +1,24 @@
 Class {
 	#name : #OWSTMSTest,
 	#superclass : #TestCase,
+	#instVars : [
+		'tms'
+	],
 	#category : #'OWS-Tests'
 }
+
+{ #category : #running }
+OWSTMSTest >> setUp [
+
+	super setUp.
+
+	tms := OWSTMS new
+]
 
 { #category : #tests }
 OWSTMSTest >> testTile [
 
-	| tms tile |
-	tms := OWSTMS new.
+	| tile |
 	tms url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'.
 
 	tile := tms tile: 0 y: 0 z: 0.
