@@ -7,8 +7,6 @@ SmalltalkCISpec {
     }
   ],
   #testing : {
-    #include : {
-      #packages : [ 'OWS*-Tests' ]
-    }
+    #packages : [ 'OWS-Tests' ]
   }
 }
