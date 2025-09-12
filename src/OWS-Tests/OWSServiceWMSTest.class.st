@@ -17,7 +17,8 @@ OWSServiceWMSTest >> setUp [
 
 	super setUp.
 
-	wms := OWSServiceWMS new
+	wms := OWSServiceWMS new.
+	self timeLimit: 30 seconds. "See issue #25: some servers are long to answer"
 ]
 
 { #category : #testsGetCapabilities }
@@ -67,8 +68,6 @@ OWSServiceWMSTest >> testLayers [
 OWSServiceWMSTest >> testOneLayer [
 
 	| map size |
-	self timeLimit: 10 seconds.
-	
 	wms url: 'https://data.geopf.fr/wms-r'.
 
 	size := 800 @ 600.
@@ -115,8 +114,6 @@ OWSServiceWMSTest >> testOperations [
 OWSServiceWMSTest >> testSeveralLayers [
 
 	| map size |
-	self timeLimit: 10 seconds.
-	
 	size := 800 @ 600.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	map := wms
