@@ -3,14 +3,23 @@ Class {
 	#superclass : #TestCase,
 	#traits : 'TTestTools',
 	#classTraits : 'TTestTools classTrait',
+	#instVars : [
+		'wmts'
+	],
 	#category : #'OWS-Tests'
 }
+
+{ #category : #running }
+OWSServiceWMTSTest >> setUp [
+	super setUp.
+
+	wmts := OWSServiceWMTS new
+]
 
 { #category : #testsGetTile }
 OWSServiceWMTSTest >> testGetTile [
 
-	| wmts tile |
-	wmts := OWSServiceWMTS new.
+	| tile |
 	wmts url: 'https://data.geopf.fr/wmts'.
 
 	tile := wmts
@@ -32,8 +41,7 @@ OWSServiceWMTSTest >> testGetTile [
 { #category : #testsGetCapabilities }
 OWSServiceWMTSTest >> testOperations [
 
-	| wmts requests gettile |
-	wmts := OWSServiceWMTS new.
+	| requests gettile |
 	wmts url: 'https://data.geopf.fr/wmts'.
 	requests := wmts operations.
 	self assert: requests size equals: 3.
@@ -45,8 +53,7 @@ OWSServiceWMTSTest >> testOperations [
 { #category : #testsGetCapabilities }
 OWSServiceWMTSTest >> testVersion [
 
-	| wmts version |
-	wmts := OWSServiceWMTS new.
+	| version |
 	wmts url: 'https://data.geopf.fr/wmts'.
 	
 	version := wmts version.

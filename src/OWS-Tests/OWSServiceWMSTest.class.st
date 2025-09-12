@@ -6,14 +6,24 @@ Class {
 	#superclass : #TestCase,
 	#traits : 'TTestTools',
 	#classTraits : 'TTestTools classTrait',
+	#instVars : [
+		'wms'
+	],
 	#category : #'OWS-Tests'
 }
+
+{ #category : #running }
+OWSServiceWMSTest >> setUp [
+
+	super setUp.
+
+	wms := OWSServiceWMS new
+]
 
 { #category : #testsGetCapabilities }
 OWSServiceWMSTest >> testDocument [
 
-	| wms doc |
-	wms := OWSServiceWMS new.
+	| doc |
 	wms url: 'https://data.geopf.fr/wms-r'.
 	doc := wms capabilities.
 	self assert: doc root name equals: 'WMS_Capabilities'
@@ -22,8 +32,7 @@ OWSServiceWMSTest >> testDocument [
 { #category : #testsGetMap }
 OWSServiceWMSTest >> testInvalidLayer [
 
-	| wms map size |
-	wms := OWSServiceWMS new.
+	| map size |
 	size := 800 @ 600.
 	wms url: 'https://data.geopf.fr/wms-r'.
 
@@ -40,8 +49,7 @@ OWSServiceWMSTest >> testInvalidLayer [
 { #category : #testsGetCapabilities }
 OWSServiceWMSTest >> testLayers [
 
-	| wms layers ok |
-	wms := OWSServiceWMS new.
+	| layers ok |
 	wms url: 'https://data.geopf.fr/wms-r'.
 	layers := wms layers.
 	self assert: layers isNotEmpty.
@@ -58,8 +66,9 @@ OWSServiceWMSTest >> testLayers [
 { #category : #testsGetMap }
 OWSServiceWMSTest >> testOneLayer [
 
-	| wms map size |
-	wms := OWSServiceWMS new.
+	| map size |
+	self timeLimit: 10 seconds.
+	
 	wms url: 'https://data.geopf.fr/wms-r'.
 
 	size := 800 @ 600.
@@ -79,8 +88,7 @@ OWSServiceWMSTest >> testOneLayer [
 { #category : #testsGetCapabilities }
 OWSServiceWMSTest >> testOperations [
 
-	| wms requests ok x |
-	wms := OWSServiceWMS new.
+	| requests ok x |
 	wms url: 'https://data.geopf.fr/wms-r'.
 	requests := wms operations.
 	self assert: requests isNotEmpty.
@@ -106,8 +114,9 @@ OWSServiceWMSTest >> testOperations [
 { #category : #testsGetMap }
 OWSServiceWMSTest >> testSeveralLayers [
 
-	| wms map size |
-	wms := OWSServiceWMS new.
+	| map size |
+	self timeLimit: 10 seconds.
+	
 	size := 800 @ 600.
 	wms url: 'https://data.geopf.fr/wms-r'.
 	map := wms
@@ -126,8 +135,7 @@ OWSServiceWMSTest >> testSeveralLayers [
 { #category : #testsGetCapabilities }
 OWSServiceWMSTest >> testVersion [
 
-	| wms version |
-	wms := OWSServiceWMS new.
+	| version |
 	wms url: 'https://data.geopf.fr/wms-r'.
 
 	version := wms version.
