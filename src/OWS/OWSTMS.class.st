@@ -15,11 +15,15 @@ OWSTMS >> tile: aX y: aY z: aZ [
 	tileUrl := tileUrl copyReplaceAll: '{y}' with: aY printString.
 	tileUrl := tileUrl copyReplaceAll: '{z}' with: aZ printString.
 
-	result := ZnClient new 
+	result := [ ZnClient new 
 		url: tileUrl;
-		get.
+		get ] on: NameLookupFailure do:[ :ex |
+		"Cannot reach the url, curently when there is no network, return nil"
+		nil
+	].
 	
-	result isString ifTrue: [ (Error new messageText: result) signal ].
+	result ifNil:[ ^ nil ].
+	result isString ifTrue: [ ^ nil ].
 
 	^ Form fromBinaryStream: result readStream
 ]
