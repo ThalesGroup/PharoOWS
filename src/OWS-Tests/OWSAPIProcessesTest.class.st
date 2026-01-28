@@ -39,4 +39,8 @@ OWSAPIProcessesTest >> testProcesses [
 	
 	api url: 'https://demo.pygeoapi.io/master/'.
 	json := api processes.
+	self assert: json size equals: 6.
+	
+   json := api process: 'hello-world'.
+   self assert: (json at: 'id') equals: 'hello-world'.
 ]
