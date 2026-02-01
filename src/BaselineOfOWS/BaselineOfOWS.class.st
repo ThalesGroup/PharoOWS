@@ -25,4 +25,7 @@ BaselineOfOWS >> dependencies: spec [
 
 	spec baseline: 'XMLParser' with: [
 		spec repository: 'github://pharo-contributions/XML-XMLParser/src' ].
+	
+   spec baseline: 'NeoJSON' with: [
+      spec repository: 'github://svenvc/NeoJSON/repository' ].
 ]
