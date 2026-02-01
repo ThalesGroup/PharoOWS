@@ -13,15 +13,6 @@ OWSAPIProcesses >> conformance [
 	^ (NeoJSONReader  fromString: json) at: 'conformsTo'
 ]
 
-{ #category : #private }
-OWSAPIProcesses >> execute: id params: aJsonDict [
-
-	| params res |
-	params := '/processes/', id, '/execution?f=json'.
-	res := self client get: self url, params.
-	^ res
-]
-
 { #category : #accessing }
 OWSAPIProcesses >> job: id [ 
 
@@ -47,6 +38,24 @@ OWSAPIProcesses >> process: id [
 	params := '/processes/', id, '?f=json'.
 	json := self client get: self url, params.
 	^ NeoJSONReader  fromString: json
+]
+
+{ #category : #private }
+OWSAPIProcesses >> process: id params: aJsonDict [
+
+	| params json entity res |
+	params := '/processes/', id, '/execution?f=json'.
+	json := NeoJSONWriter toString: aJsonDict.
+	
+	entity := ZnEntity text: json.
+   entity contentType: ZnMimeType applicationJson.
+
+	res := self client 
+	   url: self url, params;
+	   entity: entity;
+	   post.
+	
+	^ NeoJSONReader fromString: res
 ]
 
 { #category : #private }
