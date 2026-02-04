@@ -31,6 +31,14 @@ OWSAPIProcesses >> jobs [
 	^ (NeoJSONReader  fromString: json) at: 'jobs'
 ]
 
+{ #category : #'as yet unclassified' }
+OWSAPIProcesses >> landingpage [
+
+   | json |
+	json := self client get: self url, '?f=json'.
+	^ NeoJSONReader  fromString: json
+]
+
 { #category : #accessing }
 OWSAPIProcesses >> process: id [ 
 

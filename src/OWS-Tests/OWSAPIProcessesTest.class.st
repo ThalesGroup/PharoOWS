@@ -12,6 +12,7 @@ OWSAPIProcessesTest >> setUp [
 	super setUp.
 
 	api := OWSAPIProcesses new.
+	api url: 'https://demo.pygeoapi.io/master/'.
 ]
 
 { #category : #tests }
@@ -19,8 +20,8 @@ OWSAPIProcessesTest >> testConformance [
 
 	| json |
 	
-	api url: 'https://demo.pygeoapi.io/master/'.
 	json := api conformance.
+	self assert: (json isCollection).
 ]
 
 { #category : #tests }
@@ -28,8 +29,20 @@ OWSAPIProcessesTest >> testJobs [
 
 	| json |
 	
-	api url: 'https://demo.pygeoapi.io/master/'.
 	json := api jobs.
+   self assert: (json isCollection).
+]
+
+{ #category : #tests }
+OWSAPIProcessesTest >> testLandingPage [
+
+	| json |
+	
+	json := api landingpage.
+	
+   self assert: (json includesKey: 'links').
+   self assert: (json includesKey: 'description').
+   self assert: (json includesKey: 'title').
 ]
 
 { #category : #tests }
@@ -37,7 +50,6 @@ OWSAPIProcessesTest >> testProcesses [
 
 	| json |
 	
-	api url: 'https://demo.pygeoapi.io/master/'.
 	json := api processes.
 	self assert: json size equals: 6.
 	
