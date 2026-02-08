@@ -12,3 +12,4 @@ Metacello new
 Dependencies are:
 
 * [XMLParser](https://github.com/pharo-contributions/XML-XMLParser)
+* [NeoJSON](https://github.com/svenvc/NeoJSON)
