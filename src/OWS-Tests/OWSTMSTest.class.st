@@ -12,6 +12,7 @@ OWSTMSTest >> setUp [
 
 	super setUp.
 
+	self timeLimit: 30 seconds..
 	tms := OWSTMS new
 ]
 
