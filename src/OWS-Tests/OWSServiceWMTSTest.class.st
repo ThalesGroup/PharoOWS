@@ -11,9 +11,10 @@ Class {
 
 { #category : #running }
 OWSServiceWMTSTest >> setUp [
-	super setUp.
 	
-	self timeLimit: 30 seconds.
+	super setUp.
+
+	self timeLimit: 60 seconds.
 	wmts := OWSServiceWMTS new
 ]
 

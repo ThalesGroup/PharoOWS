@@ -9,9 +9,10 @@ Class {
 
 { #category : #running }
 OWSAPIProcessesTest >> setUp [
+	
 	super setUp.
 
-	self timeLimit: 30 seconds.
+	self timeLimit: 60 seconds.
 	api := OWSAPIProcesses new.
 	api url: 'https://demo.pygeoapi.io/master/'.
 ]
