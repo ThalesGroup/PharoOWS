@@ -3,12 +3,12 @@
 [![Pharo 11](https://img.shields.io/badge/Pharo-11-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 12](https://img.shields.io/badge/Pharo-12-%23aac9ff.svg)](https://pharo.org/download)
 [![Pharo 13](https://img.shields.io/badge/Pharo-13-%23aac9ff.svg)](https://pharo.org/download)
+[![Pharo 14](https://img.shields.io/badge/Pharo-14-%23aac9ff.svg)](https://pharo.org/download)
 
 [![Release](https://img.shields.io/badge/release-1.0.0-green.svg)](https://github.com/ThalesGroup/PharoOWS/releases/tag/1.0.1)
 [![License](https://img.shields.io/github/license/ThalesGroup/PharoOWS.svg)](./LICENSE)
 [![Unit tests](https://github.com/ThalesGroup/PharoOWS/actions/workflows/CI.yml/badge.svg)](https://github.com/ThalesGroup/PharoOWS/actions/workflows/CI.yml)
 [![Documentation](https://img.shields.io/badge/docs-Book-informational)](https://thalesgroup.github.io/PharoOWS/)
-
 
 ## :information_source: Get started
 
