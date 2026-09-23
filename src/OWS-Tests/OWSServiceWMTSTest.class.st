@@ -11,11 +11,12 @@ Class {
 
 { #category : #running }
 OWSServiceWMTSTest >> setUp [
-	
+
 	super setUp.
 
 	self timeLimit: 60 seconds.
-	wmts := OWSServiceWMTS new
+	wmts := OWSServiceWMTS new.
+	wmts client timeout: 60.
 ]
 
 { #category : #testsGetTile }

@@ -19,6 +19,7 @@ OWSServiceWMSTest >> setUp [
 
 	self timeLimit: 60 seconds. "See issue #25: some servers are long to answer"
 	wms := OWSServiceWMS new.
+	wms client timeout: 60.
 ]
 
 { #category : #testsGetCapabilities }
